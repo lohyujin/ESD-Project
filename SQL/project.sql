@@ -116,10 +116,15 @@ CREATE TABLE notification (
 
 -- Add Data --
 
-INSERT INTO product(Pname, Pdesc, price, availability, category)
+INSERT INTO vendor(Vname)
 VALUES 
-('The Shining', 'The Torrance Family slowly go insane in the Overlook Hotel', 5.99, 3, 'books'),
-('The Kite Runner', 'The cruelties of living in Afghanistan', 12.99, 4, 'books'),
-('Zoo', 'Animals turn haywire and turn on humans', 6.99, 10, 'books'),
-('Samsung S10', 'Same phone different design', 1200.00, 25, 'phones');
+('Tan Ah Gao'),
+("Mum's cook");
+
+INSERT INTO product(Pname, Pdesc, price, availability, category, VID)
+VALUES 
+('The Shining', 'The Torrance Family slowly go insane in the Overlook Hotel', 5.99, 3, 'books', 1),
+('The Kite Runner', 'The cruelties of living in Afghanistan', 12.99, 4, 'books', 1),
+('Zoo', 'Animals turn haywire and turn on humans', 6.99, 10, 'books', 2),
+('Samsung S10', 'Same phone different design', 1200.00, 25, 'phones', 2);
 
