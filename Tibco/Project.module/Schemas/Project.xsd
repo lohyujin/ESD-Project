@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Created with Liquid Studio 2018 (https://www.liquid-technologies.com) -->
+<schema xmlns:tns="http://www.shop.com/Books" elementFormDefault="qualified" targetNamespace="http://www.shop.com/Books" xmlns="http://www.w3.org/2001/XMLSchema">
+    <complexType name="Product">
+        <sequence>
+            <element name="pid" type="integer" minOccurs="1" />
+            <element name="Pname" type="string" minOccurs="1" />
+            <element name="Pdesc" type="string" minOccurs="1" />
+            <element name="price" type="decimal" minOccurs="1" />
+            <element name="availability" type="integer" minOccurs="0" />
+            <element name="category" type="string" minOccurs="1" />
+        </sequence>
+    </complexType>
+    <element name="Product" type="tns:Product" />
+    <complexType name="Products">
+        <sequence>
+            <element ref="tns:Product" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="Products" type="tns:Products" />
+</schema>

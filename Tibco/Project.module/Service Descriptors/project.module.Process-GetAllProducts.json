@@ -1,0 +1,81 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Getting All Products",
+    "description" : "Getting All Products"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/products/{search}&{category}" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-products",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "search",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "category",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Products to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Products"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Products" : {
+      "type" : "object",
+      "properties" : {
+        "Product" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Product",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "Product" : {
+      "type" : "object",
+      "required" : [ "Pname", "price", "Pdesc", "pid", "category" ],
+      "properties" : {
+        "pid" : {
+          "type" : "integer"
+        },
+        "Pname" : {
+          "type" : "string"
+        },
+        "Pdesc" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "integer"
+        },
+        "availability" : {
+          "type" : "integer"
+        },
+        "category" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
