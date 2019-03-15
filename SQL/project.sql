@@ -11,8 +11,8 @@ SET time_zone = "+00:00";
 
 -- Create Database -- 
 
-CREATE DATABASE IF NOT EXISTS project DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE project;
+CREATE DATABASE IF NOT EXISTS project_product DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE project_product;
 
 -- Add Table --
 
@@ -28,6 +28,22 @@ CREATE TABLE product (
   PRIMARY KEY (PID)
 );
 
+-- Add Data --
+
+INSERT INTO product(Pname, Pdesc, price, availability, category)
+VALUES 
+('The Shining', 'The Torrance Family slowly go insane in the Overlook Hotel', 5.99, 3, 'books'),
+('The Kite Runner', 'The cruelties of living in Afghanistan', 12.99, 4, 'books'),
+('Zoo', 'Animals turn haywire and turn on humans', 6.99, 10, 'books'),
+('Samsung S10', 'Same phone different design', 1200.00, 25, 'phones');
+
+-- Create Database -- 
+
+CREATE DATABASE IF NOT EXISTS project_cart DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE project_cart;
+
+-- Add Table --
+
 DROP TABLE IF EXISTS cart;
 CREATE TABLE cart (
   CID 			INT 			NOT NULL	AUTO_INCREMENT,
@@ -41,6 +57,13 @@ CREATE TABLE cart (
   PRIMARY KEY (CID)
 );
 
+-- Create Database -- 
+
+CREATE DATABASE IF NOT EXISTS project_corder DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE project_corder;
+
+-- Add Table --
+
 DROP TABLE IF EXISTS corder;
 CREATE TABLE corder (
   OID 			INT 			NOT NULL	AUTO_INCREMENT,
@@ -51,11 +74,16 @@ CREATE TABLE corder (
   qty			INT				NOT NULL,
   category 		VARCHAR(45) 	NOT NULL,
   Pstatus		VARCHAR(20),
-  CID			INT 			NOT NULL,
   
-  PRIMARY KEY (OID),
-  FOREIGN KEY (CID) REFERENCES cart(CID)
+  PRIMARY KEY (OID)
 );
+
+-- Create Database -- 
+
+CREATE DATABASE IF NOT EXISTS project_payment DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE project_payment;
+
+-- Add Table --
 
 DROP TABLE IF EXISTS payment;
 CREATE TABLE payment (
@@ -63,29 +91,21 @@ CREATE TABLE payment (
   Pstatus		VARCHAR(20)		NOT NULL,
   price 		DECIMAL(10,2) 	NOT NULL,
   qty			INT				NOT NULL,
-  OID			INT				NOT NULL,
   
-  PRIMARY KEY (PayID),
-  FOREIGN KEY (OID) REFERENCES corder(OID)
+  PRIMARY KEY (PayID)
 );
+
+-- Create Database -- 
+
+CREATE DATABASE IF NOT EXISTS project_notification DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE project_notification;
+
+-- Add Table --
 
 DROP TABLE IF EXISTS notification;
 CREATE TABLE notification (
   NID			INT 			NOT NULL AUTO_INCREMENT,
-  OID			INT				NOT NULL,
-  VOID			INT				NOT NULL,
   Pstatus		VARCHAR(20)		NOT NULL,
   
-  PRIMARY KEY (NID),
-  FOREIGN KEY (OID) REFERENCES corder(OID)
+  PRIMARY KEY (NID)
 );
-
--- Add Data --
-
-INSERT INTO product(Pname, Pdesc, price, availability, category)
-VALUES 
-('The Shining', 'The Torrance Family slowly go insane in the Overlook Hotel', 5.99, 3, 'books'),
-('The Kite Runner', 'The cruelties of living in Afghanistan', 12.99, 4, 'books'),
-('Zoo', 'Animals turn haywire and turn on humans', 6.99, 10, 'books'),
-('Samsung S10', 'Same phone different design', 1200.00, 25, 'phones');
-
