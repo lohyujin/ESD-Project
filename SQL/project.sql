@@ -50,12 +50,21 @@ CREATE TABLE cart (
   Pname 		VARCHAR(45) 	NOT NULL,
   Pdesc 		VARCHAR(1000)	NOT NULL,
   price 		DECIMAL(10,2) 	NOT NULL,
-  availability 	INT(11) 		NOT NULL,
   qty			INT				NOT NULL,
-  category 		VARCHAR(45) 	NOT NULL,
+  Pstatus		VARCHAR(20),
+  PID           INT             NOT NULL,
   
   PRIMARY KEY (CID)
 );
+
+-- Add Data --
+
+INSERT INTO cart(Pname, Pdesc, price, qty, Pstatus, PID)
+VALUES 
+('The Shining', 'The Torrance Family slowly go insane in the Overlook Hotel', 5.99, 3, '', 1),
+('The Kite Runner', 'The cruelties of living in Afghanistan', 12.99, 4, '', 2),
+('Zoo', 'Animals turn haywire and turn on humans', 6.99, 10, '', 3),
+('Samsung S10', 'Same phone different design', 1200.00, 25, '', 4);
 
 -- Create Database -- 
 
@@ -70,13 +79,22 @@ CREATE TABLE corder (
   Pname 		VARCHAR(45) 	NOT NULL,
   Pdesc 		VARCHAR(1000)	NOT NULL,
   price 		DECIMAL(10,2) 	NOT NULL,
-  availability 	INT(11) 		NOT NULL,
   qty			INT				NOT NULL,
-  category 		VARCHAR(45) 	NOT NULL,
   Pstatus		VARCHAR(20),
+  CID           INT             NOT NULL,
+  PID           INT             NOT NULL,
   
   PRIMARY KEY (OID)
 );
+
+-- Add Data --
+
+INSERT INTO corder(Pname, Pdesc, price, qty, Pstatus, CID, PID)
+VALUES 
+('The Shining', 'The Torrance Family slowly go insane in the Overlook Hotel', 5.99, 3, '', 1, 1),
+('The Kite Runner', 'The cruelties of living in Afghanistan', 12.99, 4, '', 1, 2),
+('Zoo', 'Animals turn haywire and turn on humans', 6.99, 10, '', 2, 3),
+('Samsung S10', 'Same phone different design', 1200.00, 25, '', 2, 4);
 
 -- Create Database -- 
 
