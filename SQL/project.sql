@@ -102,6 +102,7 @@ DROP TABLE IF EXISTS corder;
 CREATE TABLE corder (
   OID 			INT 			NOT NULL	AUTO_INCREMENT,
   CID           VARCHAR(30)     NOT NULL,
+  Pstatus		VARCHAR(20),
   timestamp     timestamp       NOT NULL    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   
   PRIMARY KEY (OID)
@@ -109,12 +110,12 @@ CREATE TABLE corder (
 
 -- Add Data --
 
-INSERT INTO corder(CID, timestamp)
+INSERT INTO corder(OID, CID, Pstatus, timestamp)
 VALUES 
-('James Tan', '2018-11-14 14:42:31'),
-('James Tan', '2018-11-15 20:42:31'),
-('James Tan', '2018-11-16 21:42:31'),
-('James Tan', '2018-11-17 22:42:31');
+(5, 'James Tan', '', '2018-11-14 14:42:31'),
+(6, 'James Tan', '', '2018-11-15 20:42:31'),
+(7, 'James Tan', '', '2018-11-16 21:42:31'),
+(8, 'James Tan', '', '2018-11-17 22:42:31');
 
 -- Add Table --
 
@@ -123,10 +124,8 @@ CREATE TABLE IF NOT EXISTS order_items (
   IID           INT             NOT NULL AUTO_INCREMENT,
   PID           INT             NOT NULL,
   Pname 		VARCHAR(45) 	NOT NULL,
-  Pdesc 		VARCHAR(1000)	NOT NULL,
   price 		DECIMAL(10,2) 	NOT NULL,
   qty			INT				NOT NULL,
-  Pstatus		VARCHAR(20),
   OID           INT             NOT NULL,
 
   PRIMARY KEY (IID),
@@ -135,12 +134,12 @@ CREATE TABLE IF NOT EXISTS order_items (
 
 -- Add Data --
 
-INSERT INTO order_items(PID, Pname, Pdesc, price, qty, Pstatus, OID)
+INSERT INTO order_items(PID, Pname, price, qty, OID)
 VALUES 
-(1, 'The Shining', 'The Torrance Family slowly go insane in the Overlook Hotel', 5.99, 3, '', 1),
-(2, 'The Kite Runner', 'The cruelties of living in Afghanistan', 12.99, 4, '', 2),
-(3, 'Zoo', 'Animals turn haywire and turn on humans', 6.99, 10, '', 3),
-(4, 'Samsung S10', 'Same phone different design', 1200.00, 25, '', 4);
+(1, 'The Shining', 5.99, 3, 1),
+(2, 'The Kite Runner', 12.99, 4, 2),
+(3, 'Zoo', 6.99, 10, 3),
+(4, 'Samsung S10', 1200.00, 25, 4);
 
 -- Create Database -- 
 
