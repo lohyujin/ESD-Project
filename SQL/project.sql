@@ -112,10 +112,10 @@ CREATE TABLE corder (
 
 INSERT INTO corder(OID, CID, Pstatus, timestamp)
 VALUES 
-(5, 'James Tan', '', '2018-11-14 14:42:31'),
-(6, 'James Tan', '', '2018-11-15 20:42:31'),
-(7, 'James Tan', '', '2018-11-16 21:42:31'),
-(8, 'James Tan', '', '2018-11-17 22:42:31');
+(1, 'James Tan', '', '2018-11-14 14:42:31'),
+(2, 'James Tan', '', '2018-11-15 20:42:31'),
+(3, 'James Tan', '', '2018-11-16 21:42:31'),
+(4, 'James Tan', '', '2018-11-17 22:42:31');
 
 -- Add Table --
 
