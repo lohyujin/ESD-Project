@@ -1,0 +1,17 @@
+{
+    "records": [{
+        "name": "Cloud",
+        "items": [],
+        "url": "https://integration.cloud.tibco.com:443"
+    }],
+    "resources": [
+        {
+            "location": "Service Descriptors/orders2.projOrders.module.Process-Orders.json",
+            "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/orders2.projOrders.Process-Orders.json",
+            "type": "generated"
+        }
+    ]
+}

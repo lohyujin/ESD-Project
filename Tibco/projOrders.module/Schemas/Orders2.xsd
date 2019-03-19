@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema xmlns:tns="http://www.amazing.com/Orders" elementFormDefault="qualified" targetNamespace="http://www.amazing.com/Orders" xmlns="http://www.w3.org/2001/XMLSchema">
+    <complexType name="Add_Order">
+        <sequence>
+        	<element name="CID" type="string" minOccurs="1" />
+        	<element name="Pstatus" type="string" minOccurs="1"></element>
+        	<element name="add_order_items" type="tns:Add_Order_Item"
+        		minOccurs="1" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="Add_Order" type="tns:Add_Order" />
+
+    <complexType name="Add_Order_Item">
+        <sequence>
+        	<element name="PID" type="integer" minOccurs="1" />
+        	<element name="Pname" type="string" minOccurs="1"></element>
+        	<element name="price" type="integer" minOccurs="1"></element>
+        	<element name="qty" type="integer" minOccurs="1" />
+        </sequence>
+    </complexType>
+    <element name="Add_Order_Item" type="tns:Add_Order_Item" />
+
+    <complexType name="Order">
+        <sequence>
+        	<element name="OID" type="integer" minOccurs="1" />
+        	<element name="CID" type="string" minOccurs="1" />
+        	<element name="Pstatus" type="string" minOccurs="1"></element>
+        	<element name="timestamp" type="dateTime" minOccurs="1" />
+        	<element name="order_items" type="tns:Order_Item"
+        		minOccurs="1" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="Order" type="tns:Order" />
+
+    <complexType name="Order_Item">
+        <sequence>
+        	<element name="IID" type="integer" minOccurs="1" />
+        	<element name="PID" type="integer" minOccurs="1" />
+        	<element name="Pname" type="string" minOccurs="1"></element>
+        	<element name="price" type="decimal" minOccurs="1"></element>
+        	<element name="qty" type="integer" minOccurs="1" />
+        </sequence>
+    </complexType>
+    <element name="Order_Item" type="tns:Order_Item" />
+</schema>
