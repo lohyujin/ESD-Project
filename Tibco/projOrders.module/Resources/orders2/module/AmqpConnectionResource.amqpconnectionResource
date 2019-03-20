@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amqp="http://ns.tibco.com/bw/sharedresource/amqp" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmi:id="_mQGtUUmrEemM5L4dI9ASQA" name="orders2.module.AmqpConnectionResource" type="amqp:AmqpConnection">
+  <jndi:configuration xsi:type="amqp:AmqpConnection" xmi:id="_mQGtUkmrEemM5L4dI9ASQA" brokerType="RabbitMQ-0-9" connectionUrl="amqp://&lt;host>:&lt;port>/?sync-publish=false&amp;max-sessions=0" host="localhost:5672" userName="guest" passWord="#!Sa/FvqFAbvk0X3N9PqE9O6+i8U3B6TE8" connectionTimeout="3000" networkRecoveryInterval="6000" autoAck="true" ackMode="Auto" queueDurable="true" hostQpid="&lt;host>:&lt;port>" connectionTimeoutQpid="3000" reconnectionTryTimes="3" retryIntervalTime="3000"/>
+</jndi:namedResource>

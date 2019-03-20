@@ -1,0 +1,130 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Orders service.",
+    "description" : "Orders service."
+  },
+  "host" : "localhost:8082",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/orders" : {
+      "post" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "post-orders",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Add_Order"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Order to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Order"
+            }
+          },
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Order" : {
+      "type" : "object",
+      "required" : [ "Pstatus", "OID", "CID", "timestamp", "order_items" ],
+      "properties" : {
+        "OID" : {
+          "type" : "integer"
+        },
+        "CID" : {
+          "type" : "string"
+        },
+        "Pstatus" : {
+          "type" : "string"
+        },
+        "timestamp" : {
+          "type" : "string"
+        },
+        "order_items" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/order_items",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "add_order_items" : {
+      "type" : "object",
+      "required" : [ "Pname", "price", "qty", "PID" ],
+      "properties" : {
+        "PID" : {
+          "type" : "integer"
+        },
+        "Pname" : {
+          "type" : "integer"
+        },
+        "price" : {
+          "type" : "string"
+        },
+        "qty" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "Add_Order" : {
+      "type" : "object",
+      "required" : [ "add_order_items", "Pstatus", "CID" ],
+      "properties" : {
+        "CID" : {
+          "type" : "string"
+        },
+        "Pstatus" : {
+          "type" : "string"
+        },
+        "add_order_items" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/add_order_items",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "order_items" : {
+      "type" : "object",
+      "required" : [ "Pname", "IID", "price", "qty", "PID" ],
+      "properties" : {
+        "IID" : {
+          "type" : "integer"
+        },
+        "PID" : {
+          "type" : "integer"
+        },
+        "Pname" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "integer"
+        },
+        "qty" : {
+          "type" : "integer"
+        }
+      }
+    }
+  }
+}

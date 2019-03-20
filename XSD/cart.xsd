@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2018 (https://www.liquid-technologies.com)-->
+<schema xmlns:tns="http://www.amazing.com/Books" elementFormDefault="qualified" targetNamespace="http://www.amazing.com/Books" xmlns="http://www.w3.org/2001/XMLSchema">
+    <complexType name="cart_item">
+        <sequence>
+            <element name="PID" type="string" minOccurs="1" />
+            <element name="Pname" type="string" minOccurs="1" />
+            <element name="Pdesc" type="string" minOccurs="1" />
+            <element name="price" type="float" minOccurs="1" />
+            <element name="qty" type="integer" minOccurs="1" />
+            <element name="Pstatus" type="integer" minOccurs="0" />
+            <element name="CartID" type="integer" minOccurs="1" />
+        </sequence>
+    </complexType>
+    <element name="cart_item" type="tns:cart_item" />
+    <complexType name="cart">
+        <sequence>
+            <element name="CID" type="string" minOccurs="1" />
+            <element name="timestamp" type="date" minOccurs="1" />
+            <element ref="tns:cart_item" minOccurs="1" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="cart" type="tns:cart" />
+</schema>
