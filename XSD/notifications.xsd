@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2018 (https://www.liquid-technologies.com)-->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="order">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="notification" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="product_status" type="xs:string" minOccurs="1" maxOccurs="1" />
+                            <xs:element name="order_id" type="xs:integer" minOccurs="1" maxOccurs="1" />
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:integer" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

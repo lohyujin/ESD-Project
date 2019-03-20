@@ -171,6 +171,16 @@ DROP TABLE IF EXISTS notification;
 CREATE TABLE notification (
   NID			INT 			NOT NULL AUTO_INCREMENT,
   Pstatus		VARCHAR(20)		NOT NULL,
+  OID           INT             NOT NULL,
   
-  PRIMARY KEY (NID)
+  PRIMARY KEY (NID),
+  FOREIGN KEY (OID) REFERENCES corder (OID)
 );
+
+-- Add Data -- 
+INSERT INTO notification(NID, Pstatus, OID)
+VALUES 
+(1, 'Pending',4),
+(2, 'Order received',2),
+(3, 'Ready to ship',3),
+(4, 'Out for delivery',1);
