@@ -3,22 +3,35 @@
 <schema xmlns:tns="http://www.amazing.com/Books" elementFormDefault="qualified" targetNamespace="http://www.amazing.com/Books" xmlns="http://www.w3.org/2001/XMLSchema">
     <complexType name="cart_item">
         <sequence>
-            <element name="PID" type="string" minOccurs="1" />
+            <element name="CIID" type="integer" minOccurs="1" />
+            <element name="PID" type="integer" minOccurs="1" />
             <element name="Pname" type="string" minOccurs="1" />
             <element name="Pdesc" type="string" minOccurs="1" />
             <element name="price" type="float" minOccurs="1" />
             <element name="qty" type="integer" minOccurs="1" />
-            <element name="Pstatus" type="integer" minOccurs="0" />
+            <element name="Pstatus" type="string" minOccurs="0" />
             <element name="CartID" type="integer" minOccurs="1" />
         </sequence>
     </complexType>
     <element name="cart_item" type="tns:cart_item" />
+    <complexType name="cart_items">
+        <sequence>
+            <element ref="tns:cart_item" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="cart_items" type="tns:cart_items" />
     <complexType name="cart">
         <sequence>
+            <element name="CartID" type="integer" minOccurs="1" />
             <element name="CID" type="string" minOccurs="1" />
-            <element name="timestamp" type="date" minOccurs="1" />
-            <element ref="tns:cart_item" minOccurs="1" maxOccurs="unbounded" />
+            <element name="timestamp" type="dateTime" minOccurs="1" />
         </sequence>
     </complexType>
     <element name="cart" type="tns:cart" />
+    <complexType name="carts">
+        <sequence>
+            <element ref="tns:cart" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="carts" type="tns:carts" />
 </schema>
