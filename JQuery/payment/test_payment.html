@@ -10,16 +10,19 @@
 
 <body>
     <div id="paypal-button-container"></div>
-
 </body>
   
 <script>
     paypal.Buttons({
       createOrder: function(data, actions) {
         return actions.order.create({
+          redirect_urls:{
+            return_url:"execute-payment"
+          },
           purchase_units: [{
             amount: {
-              value: '23'
+              value: '23',
+              currency: "SGD"
             }
           }]
         });
@@ -35,6 +38,7 @@
             })
           });
         });
+        // return actions.redirect();
       }
     }).render('#paypal-button-container');
   </script>
