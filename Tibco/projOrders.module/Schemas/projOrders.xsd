@@ -14,7 +14,7 @@
         <sequence>
         	<element name="PID" type="integer" minOccurs="1" />
         	<element name="Pname" type="string" minOccurs="1"></element>
-        	<element name="price" type="integer" minOccurs="1"></element>
+        	<element name="price" type="decimal" minOccurs="1"></element>
         	<element name="qty" type="integer" minOccurs="1" />
         </sequence>
     </complexType>

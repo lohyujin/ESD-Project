@@ -173,8 +173,7 @@ CREATE TABLE notification (
   Pstatus		VARCHAR(20)		NOT NULL,
   OID           INT             NOT NULL,
   
-  PRIMARY KEY (NID),
-  FOREIGN KEY (OID) REFERENCES corder (OID)
+  PRIMARY KEY (NID)
 );
 
 -- Add Data -- 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:subject="http://xsd.tns.tibco.com/trinity/models/identity/subject" xmi:id="_ssIxYU-lEemYgaWVomWTIw" name="projorders.module.JDBCConnectionResource" type="jdbc:JdbcDataSource">
+  <jndi:reference xmi:id="_ste1ME-lEemYgaWVomWTIw" key="subjectJndiName" type="subject:SubjectConfiguration" value=""/>
+  <jndi:configuration xsi:type="jdbc:JdbcDataSource" xmi:id="_ste1MU-lEemYgaWVomWTIw" username="root" password="#!dcSxR+N8GNk7+rhN7HjeyQ==">
+    <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_ste1Mk-lEemYgaWVomWTIw" jdbcDriver="com.mysql.jdbc.Driver" dbURL="jdbc:mysql://localhost:3306/project_corder"/>
+    <connectionProperties xmi:id="_vIvWsE-lEemYgaWVomWTIw" key="jarFile" value="mysql"/>
+  </jndi:configuration>
+</jndi:namedResource>

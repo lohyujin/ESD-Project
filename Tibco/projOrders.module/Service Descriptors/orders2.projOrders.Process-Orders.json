@@ -40,6 +40,30 @@
           }
         }
       }
+    },
+    "/order/{OID}" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-order",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "OID",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Order to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Order"
+            }
+          }
+        }
+      }
     }
   },
   "definitions" : {
