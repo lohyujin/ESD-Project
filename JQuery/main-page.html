@@ -71,13 +71,13 @@
                                 // Placing the data within a table
                                 var tableContent = 
                                     "<table class='table' id='results-table'>" +
-                                        "<tr><th><b>Product Name</b></th>" +
-                                        "<th><b>Description</th></br>" +
+                                        "<tr><th><b>Image</b></th>" +
+                                        "<th><b>Product</th></br>" +
                                         "<th><b>Price</b></th></tr>";
                                 for(var i = 0; i < store.length; i++) {
-                                    eachRow = "<td>" + store[i].Pname + "</td>" +
-                                    "<td>" + store[i].Pdesc + "</td>" +
-                                    "<td>" + store[i].price + "</td>";
+                                    eachRow = "<td> <img src = "+ store[i].pid + ".jpg> </td>" +
+                                    "<td>" + store[i].Pname + "<br>" + store[i].Pdesc + "</td>" +
+                                    "<td>" + store[i].price +  "</td>";
 
                                     tableContent += "<tr>" + eachRow + "<tr>";
                                 };
