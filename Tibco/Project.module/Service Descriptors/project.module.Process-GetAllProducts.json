@@ -9,6 +9,30 @@
   "basePath" : "/",
   "schemes" : [ "http" ],
   "paths" : {
+    "/getproduct/{PID}" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-getproduct",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "PID",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Product to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
     "/products/{search}&{category}" : {
       "get" : {
         "summary" : "",

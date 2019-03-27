@@ -55,13 +55,15 @@
             </form>
         </div>
         <h4 id="results-header" class="text-center text-info"></h4>
+        <!--- results from search-->
         <div id="results"></div>
+
         <script>
             $(function(){
                 $("#search-form").submit(function (event) {
                         var category = document.getElementById('category').value;
                         var search = document.getElementById('search').value;
-                        var serviceURL = "http://LAPTOP-9M0FB286:8080/products/%25" + search + "%25&%25" + category + "%25";
+                        var serviceURL = "http://DESKTOP-8BPHEDQ:8080/products/%25" + search + "%25&%25" + category + "%25";
                         $.get(serviceURL, function (data) {
                             var store = data.Product;
                             if (store == undefined) {
@@ -73,15 +75,19 @@
                                     "<table class='table' id='results-table'>" +
                                         "<tr><th><b>Image</b></th>" +
                                         "<th><b>Product</th></br>" +
-                                        "<th><b>Price</b></th></tr>";
+                                        "<th><b>Price</b></th>" +
+                                        "<th><b>Add to Cart</b></th></tr>";
                                 for(var i = 0; i < store.length; i++) {
                                     eachRow = "<td> <img src = "+ store[i].pid + ".jpg> </td>" +
                                     "<td>" + store[i].Pname + "<br>" + store[i].Pdesc + "</td>" +
-                                    "<td>" + store[i].price +  "</td>";
+                                    "<td>" + store[i].price +  "</td>" +
+                                    "<td><a href='cart.php?id=" + store[i].pid + "'>" +
+                                    "Add To Cart</a></td>";
 
                                     tableContent += "<tr>" + eachRow + "<tr>";
                                 };
                                 tableContent = tableContent + "</table>";
+                                $("#results-header").html("");
                                 $("#results").html(tableContent);
                             }
                         }) // $.get()

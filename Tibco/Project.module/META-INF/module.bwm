@@ -16,6 +16,20 @@
     </scaext:binding>
     <scact:bindingAdjunct xmi:id="_zh0_wUZCEem8yYsngeoOxw" bindingName="RestService"/>
   </sca:service>
+  <sca:service xmi:id="_pW5GUk_FEemYgaWVomWTIw" name="getproduct" promote="ComponentProcess/getproduct">
+    <sca:interface.wsdl xmi:id="_pW6UcE_FEemYgaWVomWTIw" interface="http://xmlns.example.com/20190312202505PLT#wsdl.interface(getproduct)" scaext:wsdlLocation="../Processes/project/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_pXMBQE_FEemYgaWVomWTIw" name="RestService1" path="/getproduct/{PID}" docBasePath="http://localhost:7777/Project.module" docResourcePath="GetAllProducts" basePath="/" connector="project.module.GetAllProducts" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/project.module.Process-GetAllProducts.json">
+      <operation xmi:id="_pXUkIE_FEemYgaWVomWTIw" operationName="get" nickname="get-getproduct" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_VYtrME_GEemYgaWVomWTIw">
+        <parameterMapping xmi:id="_VYtrMU_GEemYgaWVomWTIw" parameterName="PID" parameterType="Path" required="true"/>
+      </parameters>
+      <advancedConfig xmi:id="_pXMBQU_FEemYgaWVomWTIw" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_pXVLME_FEemYgaWVomWTIw" bindingName="RestService1"/>
+  </sca:service>
   <sca:property xmi:id="_EXf7gETGEemvjcaxB9Z-lQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_EXnQQETGEemvjcaxB9Z-lQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_EXpsgETGEemvjcaxB9Z-lQ" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
@@ -27,6 +41,9 @@
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_EAw2gUTGEemvjcaxB9Z-lQ" processName="project.module.Process"/>
     <sca:service xmi:id="_zhrOwEZCEem8yYsngeoOxw" name="products">
       <sca:interface.wsdl xmi:id="_zhrOwUZCEem8yYsngeoOxw" interface="http://xmlns.example.com/20190312202505PLT#wsdl.interface(products1)"/>
+    </sca:service>
+    <sca:service xmi:id="_pW5GUE_FEemYgaWVomWTIw" name="getproduct">
+      <sca:interface.wsdl xmi:id="_pW5GUU_FEemYgaWVomWTIw" interface="http://xmlns.example.com/20190312202505PLT#wsdl.interface(getproduct)"/>
     </sca:service>
   </sca:component>
 </sca:composite>
