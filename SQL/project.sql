@@ -152,9 +152,9 @@ USE project_payment;
 DROP TABLE IF EXISTS payment;
 CREATE TABLE payment (
   PayID 		INT 			NOT NULL	AUTO_INCREMENT,
+  OID       INT       NOT NULL,
   Pstatus		VARCHAR(20)		NOT NULL,
   price 		DECIMAL(10,2) 	NOT NULL,
-  qty			INT				NOT NULL,
   
   PRIMARY KEY (PayID)
 );
