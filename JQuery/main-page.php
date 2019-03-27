@@ -58,6 +58,11 @@
         <!--- results from search-->
         <div id="results"></div>
 
+        <?php
+            // session_start();
+            
+        ?>
+        
         <script>
             $(function(){
                 $("#search-form").submit(function (event) {

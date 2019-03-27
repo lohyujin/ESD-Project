@@ -1,24 +1,7 @@
 <?php
+    // session_start();
     // use url to get PID
-    $pid = $_SERVER['QUERY_STRING'];
-
-    $pname =  "<script>document.writeln(pname);</script>";
-    $price =  "<script>document.writeln(price);</script>";
-    $qty =  "<script>document.writeln(qty);</script>";
-
-    $cart_item = array($pid, $pname, $price, $qty);
-
-    // create cart session
-    if (isset($_SESSION['cart']))   {
-        $cart = $_SESSION['cart'];
-        $_SESSION['cart'] = array_push($cart, $cart_item);
-    }
-    else    {
-        session_start();
-        $_SESSION['cart'] = $cart_item;
-    }
-    // 2d array
-    $cart_to_show = $_SESSION['cart'];
+    $pid = intval($_GET['id']);
 ?>
 
 <html>
@@ -59,8 +42,6 @@
     </style>
     
     <body>
-
-
         <div class="container">
             <h1>Shopping Cart</h1>
 
@@ -76,13 +57,18 @@
                     </tr>
 
                     <!-- add all cart items -->
-                    <div id="results"></div>
+                    <tbody class="items"></tbody>
 
                     <tr>
                         <td colspan="4" align="right">Total</td>
-                        <td>ADD THE TOTAL SUM</td>
+                        <!-- add total price -->
+                        <td id='total_price'></td>
                     </tr>
                 </table>
+                <form action="checkout.php">
+                    <input class="btn btn-primary" type="submit" value="Checkout" />
+                    <input class="btn btn-primary" type="button" value="Continue Shopping" onclick="window.location.href='main-page.php'" />
+                </form>
             </div> <!-- col-md-6 -->
            </div> <!-- row -->
             
@@ -99,24 +85,26 @@
                     var price = data.price;
                     var qty = 1;
 
-                    var cart = <?php echo json_encode($cart_to_show, JSON_PRETTY_PRINT); ?>;
-                    var TableContent = "";
-                    console.log(cart);
+                    var item =          {'pid': pid, 
+                                        'pname': pname, 
+                                        'pdesc': pdesc, 
+                                        'price': price, 
+                                        'qty': qty};
 
-                    // for (var i = 0; i < cart.length; i++)   {
-                    //     no = i+1
-                    //     eachrow =   "<td>" + no + "</td>" +
-                    //                 "<td>" + cart[i].
-                    // }
+                    $.ajax({
+                        url: 'cart_ajax.php',
+                        type: 'post',
+                        data: {
+                            'item': item
+                        },
+                        success: function(data) {
+                            var obj = JSON.parse(data);
+                            $('.items').html(obj.items_details);
+                            $('#total_price').text(obj.total_price);
+                        }
+                    });
                 });
             });
-
-
-
-
-
         </script>
-
-
     </body>
 </html>
