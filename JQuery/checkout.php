@@ -1,17 +1,32 @@
 <?php
-    // session_start();
-    // use url to get PID
-    $pid = intval($_GET['id']);
-    
     session_start();
     if (isset($_SESSION['cart']))   {
-        $cart = $_SESSION['cart'];
+        $counter = 0;
+        $total = 0;
+        $output = '';
+
+        foreach ($_SESSION['cart'] as $index => $values)  {
+            $counter += 1;
+            $price = (float) $values['price'];
+            $subtotal = $price * (int) $values['qty'];
+
+            $output .= '
+            <tr>
+                <td>' . $counter . '</td>' .
+                '<td>' . $values['pname'] . '</td>' .
+                '<td>' . $price . '</td>' .
+                '<td>' . $values['qty'] . '</td>' .
+                '<td>' . $subtotal . '</td>
+            </tr>';
+        }
+        $totalprice = $_POST['totalprice'];
+        
     }
 ?>
 
 <html>
     <head>
-        <title>Cart</title>
+        <title>Checkout</title>
         <!-- HEAD
                 This is where you put your jQuery, Bootstrap JS library imports
             -->
@@ -20,6 +35,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
     </head>
+    
     <style>
         /* Style inputs */
         input[type=text], select {
@@ -43,11 +59,16 @@
         border-radius: 4px;
         cursor: pointer;
         }
+
     </style>
+
     <body>
         <div class="container">
-            <h1>Shopping Cart</h1>
+            <h1>Order</h1>
 
+            <div class="row">
+            <div class="col-md-6">
+                
             <div class="row">
             <div class="col-md-6">
                 <table class='table table-striped' id='cart-list' border='1'>
@@ -69,48 +90,19 @@
                     </tr>
                 </table>
                 <form method="POST" action="checkout.php">
-                    <input class="btn btn-primary" type="submit" value="Checkout" />
-                    <input type="hidden" id="totalprice" name="totalprice" />
-                    <input class="btn btn-primary" type="button" value="Continue Shopping" onclick="window.location.href='main-page.html'" />
+                    <label for="name">My name</label>
+                    <input type='text' id='cname' name="name" placeholder="" />
+                    <input class="btn btn-primary" type="submit" value="Make Payment" />
                 </form>
             </div> <!-- col-md-6 -->
            </div> <!-- row -->
-    
-        <!-- call get product service -->
-        <script>
-            // load cart items
-            $(document).ready(function() {
-                var pid = <?php echo $pid; ?>;
-                var serviceURL = "http://DESKTOP-8BPHEDQ:8080/getproduct/" + pid;
-                $.get(serviceURL, function (data)   {
-                    var pname = data.Pname;
-                    var pdesc = data.Pdesc;
-                    var price = data.price;
-                    var qty = 1;
-                    
-                    var item =          {'pid': pid, 
-                                        'pname': pname, 
-                                        'pdesc': pdesc, 
-                                        'price': price, 
-                                        'qty': qty};
-
-                    $.ajax({
-                        url: 'cart_ajax.php',
-                        type: 'post',
-                        data: {
-                            'item': item
-                        },
-                        success: function(data) {
-                            var obj = JSON.parse(data);
-                            $('.items').html(obj.items_details);
-                            // for displaying
-                            $('#total_price').text("$".concat(obj.total_price));
-                            // to be posted to checkout.php
-                            $('#totalprice').val(obj.total_price);
-                        }
-                    });
-                });
-            });
-        </script>
+    <script>
+        $(document).ready(function() {
+            // SUMTING WRONG
+            $('.items').html("<?php echo $output ?>");
+            $('#total_price').text("<?php echo $totalprice ?>");
+            
+        });
+    </script>
     </body>
 </html>

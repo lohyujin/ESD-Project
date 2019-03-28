@@ -6,7 +6,7 @@
         // cart is found
         if (isset($_SESSION['cart']))   {
             $avail = 0;
-            // PROBLEM
+            // PROBLEM HELP
             foreach ($_SESSION['cart'] as $index => $values) {
                 // similar item is found
                 if ($values['pid'] == $item['pid'])    {
@@ -50,7 +50,7 @@
         
         $data = array(
             'items_details' => $output,
-            'total_price' => '$' . number_format($total, 2)
+            'total_price' => number_format($total, 2)
         );
         
         echo json_encode($data);
