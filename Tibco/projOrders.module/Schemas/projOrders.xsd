@@ -3,6 +3,7 @@
     <complexType name="Add_Order">
         <sequence>
         	<element name="CID" type="string" minOccurs="1" />
+        	<element name="totalPrice" type="decimal" minOccurs="1"></element>
         	<element name="Pstatus" type="string" minOccurs="1"></element>
         	<element name="add_order_items" type="tns:Add_Order_Item"
         		minOccurs="1" maxOccurs="unbounded" />
@@ -24,6 +25,7 @@
         <sequence>
         	<element name="OID" type="integer" minOccurs="1" />
         	<element name="CID" type="string" minOccurs="1" />
+        	<element name="totalPrice" type="decimal" minOccurs="1"></element>
         	<element name="Pstatus" type="string" minOccurs="1"></element>
         	<element name="timestamp" type="dateTime" minOccurs="1" />
         	<element name="order_items" type="tns:Order_Item"

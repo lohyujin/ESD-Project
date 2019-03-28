@@ -69,13 +69,16 @@
   "definitions" : {
     "Order" : {
       "type" : "object",
-      "required" : [ "Pstatus", "OID", "CID", "timestamp", "order_items" ],
+      "required" : [ "Pstatus", "totalPrice", "OID", "CID", "timestamp", "order_items" ],
       "properties" : {
         "OID" : {
           "type" : "integer"
         },
         "CID" : {
           "type" : "string"
+        },
+        "totalPrice" : {
+          "type" : "integer"
         },
         "Pstatus" : {
           "type" : "string"
@@ -112,10 +115,13 @@
     },
     "Add_Order" : {
       "type" : "object",
-      "required" : [ "add_order_items", "Pstatus", "CID" ],
+      "required" : [ "add_order_items", "Pstatus", "totalPrice", "CID" ],
       "properties" : {
         "CID" : {
           "type" : "string"
+        },
+        "totalPrice" : {
+          "type" : "integer"
         },
         "Pstatus" : {
           "type" : "string"
