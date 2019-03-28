@@ -40,58 +40,6 @@ VALUES
 
 -- Create Database -- 
 
-DROP DATABASE IF EXISTS project_cart;
-CREATE DATABASE IF NOT EXISTS project_cart DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE project_cart;
-
--- Add Table --
-
-DROP TABLE IF EXISTS cart;
-CREATE TABLE cart (
-  CartID 		INT 			NOT NULL	AUTO_INCREMENT,
-  CID           VARCHAR(30)     NOT NULL,
-  timestamp     timestamp       NOT NULL    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  
-  PRIMARY KEY (CartID)
-);
-
--- Add Data --
-
-INSERT INTO cart(CID, timestamp)
-VALUES 
-('James Tan', '2018-11-14 14:42:31'),
-('James Tan', '2018-11-15 20:42:31'),
-('James Tan', '2018-11-16 21:42:31'),
-('James Tan', '2018-11-17 22:42:31');
-
--- Add Table --
-
-DROP TABLE IF EXISTS cart_items;
-CREATE TABLE IF NOT EXISTS cart_items (
-  CIID          INT             NOT NULL    AUTO_INCREMENT,
-  PID           INT             NOT NULL,
-  Pname 		VARCHAR(45) 	NOT NULL,
-  Pdesc 		VARCHAR(1000)	NOT NULL,
-  price 		DECIMAL(10,2) 	NOT NULL,
-  qty			INT				NOT NULL,
-  Pstatus		VARCHAR(20),
-  CartID        INT             NOT NULL,
-
-  PRIMARY KEY (CIID),
-  FOREIGN KEY (CartID) REFERENCES cart (CartID)
-);
-
--- Add Data --
-
-INSERT INTO cart_items(PID, Pname, Pdesc, price, qty, Pstatus, CartID)
-VALUES 
-(1, 'The Shining', 'The Torrance Family slowly go insane in the Overlook Hotel', 5.99, 3, '', 1),
-(2, 'The Kite Runner', 'The cruelties of living in Afghanistan', 12.99, 4, '', 2),
-(3, 'Zoo', 'Animals turn haywire and turn on humans', 6.99, 10, '', 3),
-(4, 'Samsung S10', 'Same phone different design', 1200.00, 25, '', 4);
-
--- Create Database -- 
-
 DROP DATABASE IF EXISTS project_corder;
 CREATE DATABASE IF NOT EXISTS project_corder DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE project_corder;
@@ -100,22 +48,23 @@ USE project_corder;
 
 DROP TABLE IF EXISTS corder;
 CREATE TABLE corder (
-  OID 			INT 			NOT NULL	AUTO_INCREMENT,
-  CID           VARCHAR(30)     NOT NULL,
-  Pstatus		VARCHAR(20),
-  timestamp     timestamp       NOT NULL    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    OID 			INT 			NOT NULL	AUTO_INCREMENT,
+    CID             VARCHAR(30)     NOT NULL,
+    totalPrice      decimal(10,2)   NOT NULL,
+    Pstatus		    VARCHAR(20),
+    timestamp       timestamp       NOT NULL    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   
-  PRIMARY KEY (OID)
+    PRIMARY KEY (OID)
 );
 
 -- Add Data --
 
-INSERT INTO corder(OID, CID, Pstatus, timestamp)
+INSERT INTO corder(CID, totalPrice, Pstatus, timestamp)
 VALUES 
-(1, 'James Tan', '', '2018-11-14 14:42:31'),
-(2, 'James Tan', '', '2018-11-15 20:42:31'),
-(3, 'James Tan', '', '2018-11-16 21:42:31'),
-(4, 'James Tan', '', '2018-11-17 22:42:31');
+('James Tan', 100.50, '', '2018-11-14 14:42:31'),
+('James Tan', 120.50, '', '2018-11-15 20:42:31'),
+('James Tan', 103.50, '', '2018-11-16 21:42:31'),
+('James Tan', 140.50, '', '2018-11-17 22:42:31');
 
 -- Add Table --
 

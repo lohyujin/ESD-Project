@@ -9,7 +9,7 @@
             // PROBLEM
             foreach ($_SESSION['cart'] as $index => $values) {
                 // similar item is found
-                if ($values['pid'] === $item['pid'])    {
+                if ($values['pid'] == $item['pid'])    {
                     $values['qty'] += 1;
                     $values['price'] += $item['price'];
                     $avail += 1;
