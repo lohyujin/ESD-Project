@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Created with Liquid Studio 2018 (https://www.liquid-technologies.com) -->
+<schema xmlns:tns="http://www.amazing.com/Notifications" elementFormDefault="qualified" targetNamespace="http://www.amazing.com/Notifications" xmlns="http://www.w3.org/2001/XMLSchema">
+    <complexType name="Notification">
+        <sequence>
+            <element name="NID" type="integer" minOccurs="1" />
+            <element name="OID" type="integer" minOccurs="1" />
+            <element name="Pstatus" type="string" minOccurs="1" />
+        </sequence>
+    </complexType>
+    <element name="Notification" type="tns:Notification" />
+    <complexType name="Notifications">
+        <sequence>
+            <element ref="tns:Notification" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="Notifications" type="tns:Notifications" />
+</schema>

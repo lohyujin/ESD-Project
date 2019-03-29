@@ -1,0 +1,60 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Invoke notifications service",
+    "description" : "Invoke notifications service"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/notifications" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-notifications",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a Notifications to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Notifications"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Notifications" : {
+      "type" : "object",
+      "properties" : {
+        "Notification" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Notification",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "Notification" : {
+      "type" : "object",
+      "required" : [ "Pstatus", "NID", "OID" ],
+      "properties" : {
+        "NID" : {
+          "type" : "integer"
+        },
+        "OID" : {
+          "type" : "integer"
+        },
+        "Pstatus" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

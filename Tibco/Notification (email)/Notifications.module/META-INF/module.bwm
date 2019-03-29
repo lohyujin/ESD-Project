@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_cl5HoFFHEemAi5AzOcet9w" targetNamespace="http://tns.tibco.com/bw/composite/Notifications.module" name="Notifications.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_j-u9cFFHEemAi5AzOcet9w" name="notifications" promote="ComponentProcess/notifications">
+    <sca:interface.wsdl xmi:id="_kBVlgFFHEemAi5AzOcet9w" interface="http://xmlns.example.com/20190328182134PLT#wsdl.interface(notifications)" scaext:wsdlLocation="../Processes/notifications/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_kB8pgFFHEemAi5AzOcet9w" name="RestService" path="/notifications" docBasePath="http://localhost:7777/Notifications.module" docResourcePath="Notifications" basePath="/" connector="notifications.module.Notifications" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/notifications.module.Process-Notifications.json">
+      <operation xmi:id="_kCAT4FFHEemAi5AzOcet9w" operationName="get" nickname="get-notifications" httpMethod="GET" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_kD_Q4FFHEemAi5AzOcet9w"/>
+      <advancedConfig xmi:id="_kB-esFFHEemAi5AzOcet9w" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_kCAT4VFHEemAi5AzOcet9w" bindingName="RestService"/>
+  </sca:service>
+  <sca:property xmi:id="_eCu5EFFHEemAi5AzOcet9w" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_eC8UcFFHEemAi5AzOcet9w" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_eDBM8FFHEemAi5AzOcet9w" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_eDGsgFFHEemAi5AzOcet9w" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_eDMMEFFHEemAi5AzOcet9w" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_eDQdgFFHEemAi5AzOcet9w" name="BW.CLOUD.PORT" type="XMLSchema:int" scalable="true"/>
+  <sca:property xmi:id="_eDTg0FFHEemAi5AzOcet9w" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_dfSNwFFHEemAi5AzOcet9w" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_dfS00FFHEemAi5AzOcet9w" processName="notifications.module.Process"/>
+    <sca:service xmi:id="_j-rTEFFHEemAi5AzOcet9w" name="notifications">
+      <sca:interface.wsdl xmi:id="_j-r6IFFHEemAi5AzOcet9w" interface="http://xmlns.example.com/20190328182134PLT#wsdl.interface(notifications)" scaext:wsdlLocation="../Processes/notifications/module/Process.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>
