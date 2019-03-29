@@ -1,47 +1,44 @@
 <?php
     session_start();
-    $item = $_POST['item'];
+    $pid = $_POST['pid'];
+    $pname = $_POST['pname'];
+    $pdesc = $_POST['pdesc'];
+    $price = $_POST['price'];
+    $qty = $_POST['qty'];
 
-    if (isset($_POST['item']))    {
+    if (isset($_POST['pid']))    {
         // cart is found
         if (isset($_SESSION['cart']))   {
             $avail = 0;
-            // PROBLEM HELP
-            foreach ($_SESSION['cart'] as $index => $values) {
-                // similar item is found
-                if ($values['pid'] == $item['pid'])    {
-                    $values['qty'] += 1;
-                    $values['price'] += $item['price'];
-                    $avail += 1;
-                }
+            // item exists so add qty
+            if(array_key_exists($pid, $_SESSION["cart"])){
+                $_SESSION["cart"][$pid][3] += 1;
             }
             // new item to add
-            if ($avail == 0)    {
-                $_SESSION['cart'][] = $item;
+            else    {
+                $_SESSION['cart'][$pid] = [$pname, $pdesc, $price, $qty];
             }
         }
         // cart not found
         else    {
-            $_SESSION['cart'][] = $item;
+            $_SESSION['cart'][$pid] = [$pname, $pdesc, $price, $qty];
         }
-        // session_destroy();
-        // unset($_SESSION['cart']);
-        // var_dump($_SESSION['cart']);
+
         $counter = 0;
         $total = 0;
         $output = '';
 
         foreach ($_SESSION['cart'] as $index => $values)  {
             $counter += 1;
-            $price = (float) $values['price'];
-            $subtotal = $price * (int) $values['qty'];
+            $price = (float) $values[2];
+            $subtotal = $price * (int) $values[3];
 
             $output .= '
             <tr>
                 <td>' . $counter . '</td>' .
-                '<td>' . $values['pname'] . '</td>' .
+                '<td>' . $values[0] . '</td>' .
                 '<td>' . $price . '</td>' .
-                '<td>' . $values['qty'] . '</td>' .
+                '<td>' . $values[3] . '</td>' .
                 '<td>' . $subtotal . '</td>
             </tr>';
             

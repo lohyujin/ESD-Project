@@ -88,19 +88,19 @@
                     var price = data.price;
                     var qty = 1;
                     
-                    var item =          {'pid': pid, 
-                                        'pname': pname, 
-                                        'pdesc': pdesc, 
-                                        'price': price, 
-                                        'qty': qty};
-
                     $.ajax({
                         url: 'cart_ajax.php',
                         type: 'post',
                         data: {
-                            'item': item
+                            // 'item': item
+                            'pid': pid, 
+                            'pname': pname, 
+                            'pdesc': pdesc, 
+                            'price': price, 
+                            'qty': qty
                         },
                         success: function(data) {
+                            
                             var obj = JSON.parse(data);
                             $('.items').html(obj.items_details);
                             // for displaying
