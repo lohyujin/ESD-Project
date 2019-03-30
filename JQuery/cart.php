@@ -171,6 +171,8 @@
                     dataType: "json",
                     success: function(){
                         alert('success');
+                        // window.location.href='payment.php';
+
                     },
                     error: function(jqXHR, textStatus, errorThrown){
                         alert(errorThrown);
