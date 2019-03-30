@@ -2,11 +2,13 @@
 
 include_once "authentication.php";
 
+header("Access-Control-Allow-Origin: *");
+
 $access_token = $_SESSION["access_token"];
 
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL, 'https://api.sandbox.paypal.com/v2/checkout/orders/07X15596MS3802522');
+curl_setopt($ch, CURLOPT_URL, 'https://api.sandbox.paypal.com/v2/checkout/orders/'.$_COOKIE['myorderid']);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -57,11 +59,13 @@ unset($_SESSION["assess_token"]);
             header("Access-Control-Allow-Origin: *");
             header("Access-Control-Allow-Methods: PUT, GET, POST");
             header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+        
         ?>
+    
         <script>
             $(document).ready(function() {
                 // alert("hello");
-                var serviceURL = 'http://DESKTOP-GDMA71H:8080/create_payment';
+                var serviceURL = 'http://DESKTOP-6JQFQNE:8080/create_payment';
                 $.ajaxSetup({
                     headers:{
                         'Content-Type': "application/json"
