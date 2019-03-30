@@ -26,6 +26,18 @@
     </scaext:binding>
     <scact:bindingAdjunct xmi:id="_jikaQE-kEemYgaWVomWTIw" bindingName="RestService1"/>
   </sca:service>
+  <sca:service xmi:id="_5cumkFLoEemej8ULPPd4Hg" name="lastOrder" promote="ComponentProcess/lastOrder">
+    <sca:interface.wsdl xmi:id="_5jk1cFLoEemej8ULPPd4Hg" interface="http://xmlns.example.com/20190203131549PLT#wsdl.interface(lastOrder)" scaext:wsdlLocation="../Processes/orders2/projOrders/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_5kQK4FLoEemej8ULPPd4Hg" name="RestService2" path="/lastOrder" docBasePath="http://localhost:7777/projOrders.module" docResourcePath="Orders" basePath="/" connector="orders2.module.Orders" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/orders2.projOrders.Process-Orders.json">
+      <operation xmi:id="_5kYtwFLoEemej8ULPPd4Hg" operationName="get" nickname="get-lastOrder" httpMethod="GET" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_5nDnQFLoEemej8ULPPd4Hg"/>
+      <advancedConfig xmi:id="_5kQK4VLoEemej8ULPPd4Hg" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_5kYtwVLoEemej8ULPPd4Hg" bindingName="RestService2"/>
+  </sca:service>
   <sca:property xmi:id="_9ztlwCd2Eem0BY0OkyhsXw" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_9z5L8Cd2Eem0BY0OkyhsXw" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_9z-rgCd2Eem0BY0OkyhsXw" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
@@ -40,6 +52,9 @@
     </sca:service>
     <sca:service xmi:id="_jh9WQE-kEemYgaWVomWTIw" name="order">
       <sca:interface.wsdl xmi:id="_jh99UE-kEemYgaWVomWTIw" interface="http://xmlns.example.com/20190203131549PLT#wsdl.interface(order1)" scaext:wsdlLocation="../Processes/orders2/projOrders/Process.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_5cYBQFLoEemej8ULPPd4Hg" name="lastOrder">
+      <sca:interface.wsdl xmi:id="_5cof8FLoEemej8ULPPd4Hg" interface="http://xmlns.example.com/20190203131549PLT#wsdl.interface(lastOrder)" scaext:wsdlLocation="../Processes/orders2/projOrders/Process.bwp"/>
     </sca:service>
   </sca:component>
 </sca:composite>
