@@ -61,12 +61,7 @@ unset($_SESSION["assess_token"]);
         <script>
             $(document).ready(function() {
                 // alert("hello");
-                var serviceURL = 'http://DESKTOP-GDMA71H:8080/create_payment';
-                $.ajaxSetup({
-                    headers:{
-                        'Content-Type': "application/json"
-                    }
-                });
+                var serviceURL = 'http://DESKTOP-GDMA71H:7777/payment';
                 jQuery.ajax({
                     url: serviceURL,
                     crossDomain: true,
