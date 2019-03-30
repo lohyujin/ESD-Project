@@ -27,11 +27,12 @@
       },
       onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
+          //instead of alert put payment has been made html display
           alert('Transaction completed by ' + details.payer.name.given_name);
 //          alert(data.orderID);
 
           //store orderID into cookie session
-          var orderid_data = JSON.stringify(data.orderID);
+          var orderid_data = data.orderID;
           document.cookie = "myorderid="+orderid_data;
          
           // Call your server to save the transaction
