@@ -41,6 +41,24 @@
         }
       }
     },
+    "/lastOrder" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-lastOrder",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a Order to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Order"
+            }
+          }
+        }
+      }
+    },
     "/order/{OID}" : {
       "get" : {
         "summary" : "",
