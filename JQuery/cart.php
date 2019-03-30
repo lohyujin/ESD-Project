@@ -33,7 +33,7 @@
         }
 
         /* Style the submit button */
-        input[type=submit] {
+        input[id=checkout] {
         width: 100%;
         background-color: #4CAF50;
         color: white;
@@ -68,15 +68,18 @@
                         <td id='total_price'></td>
                     </tr>
                 </table>
-                <form method="POST" action="checkout.php">
-                    <input class="btn btn-primary" type="submit" value="Checkout" />
+                <form>
+                    <label for="cname">My name:</label>
+                    <input type='text' id='cname' name='cname'>
+                    <input id='checkout' class="btn btn-primary" type="button" value="Checkout" onclick='createOrder();' />
                     <input type="hidden" id="totalprice" name="totalprice" />
                     <input class="btn btn-primary" type="button" value="Continue Shopping" onclick="window.location.href='main-page.html'" />
                 </form>
+
+                <div id='error'></div>
             </div> <!-- col-md-6 -->
            </div> <!-- row -->
     
-        <!-- call get product service -->
         <script>
             // load cart items
             $(document).ready(function() {
@@ -100,17 +103,80 @@
                             'qty': qty
                         },
                         success: function(data) {
-                            
                             var obj = JSON.parse(data);
                             $('.items').html(obj.items_details);
                             // for displaying
                             $('#total_price').text("$".concat(obj.total_price));
                             // to be posted to checkout.php
                             $('#totalprice').val(obj.total_price);
+                            updatedCart = obj.updated;
                         }
                     });
                 });
             });
-        </script>
+            </script>
+
+            <script>
+            function createOrder()  {
+                // {
+                //     "CID": "string",
+                //     "totalPrice": 0,
+                //     "Pstatus": "string",
+                //     "add_order_items": [
+                //         {
+                //             "PID": 0,
+                //             "Pname": "string",
+                //             "price": 0,
+                //             "qty": 0
+                //         },
+                //         {
+                //             "PID": 0,
+                //             "Pname": "string",
+                //             "price": 0,
+                //             "qty": 0
+                //         }
+                //     ]
+                // }
+
+                var cid = document.getElementById('cname').value;
+                var totalprice = parseFloat(document.getElementById('totalprice').value);
+                var Pstatus = 'Order Created';
+
+                var add_order_items = [];
+                for (var key in updatedCart)   {
+                    var toappend = new Object()
+                    toappend.pid = parseInt(key);
+                    toappend.Pname = updatedCart[key][0];
+                    toappend.price = parseFloat(updatedCart[key][2]);
+                    toappend.qty = parseInt(updatedCart[key][3]);
+
+                    add_order_items.push(toappend);
+                }
+                data = JSON.stringify({
+                            "CID": cid,
+                            "totalPrice": totalprice,
+                            "Pstatus": Pstatus,
+                            "add_order_items": add_order_items
+                        });
+                console.log(typeof(data));
+                alert(data);
+
+                // call service
+                var serviceURL = 'http://DESKTOP-8BPHEDQ:8082/orders';
+                $.ajax({
+                    url: serviceURL,
+                    type: "post",
+                    contentType: "application/json; charset=utf-8",
+                    data: data,
+                    dataType: "json",
+                    success: function(){
+                        alert('success');
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        alert(errorThrown);
+                    }
+                });
+            };
+            </script>
     </body>
 </html>

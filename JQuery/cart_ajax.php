@@ -9,8 +9,7 @@
     if (isset($_POST['pid']))    {
         // cart is found
         if (isset($_SESSION['cart']))   {
-            $avail = 0;
-            // item exists so add qty
+            // item exists so add qty only
             if(array_key_exists($pid, $_SESSION["cart"])){
                 $_SESSION["cart"][$pid][3] += 1;
             }
@@ -46,6 +45,7 @@
         }
         
         $data = array(
+            'updated' => $_SESSION['cart'],
             'items_details' => $output,
             'total_price' => number_format($total, 2)
         );
