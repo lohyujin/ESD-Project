@@ -2,13 +2,13 @@
 
 include_once "authentication.php";
 
-header("Access-Control-Allow-Origin: *");
+//header("Access-Control-Allow-Origin: *");
 
 $access_token = $_SESSION["access_token"];
 
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL, 'https://api.sandbox.paypal.com/v2/checkout/orders/'.$_COOKIE['myorderid']);
+curl_setopt($ch, CURLOPT_URL, 'https://api.sandbox.paypal.com/v2/checkout/orders/0N692264WG4821506');
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -29,6 +29,7 @@ echo $orderID;
 $pstatus = $json->status;
 // print_r("status = ".$pstatus);
 
+
 $purchase_units = $json->purchase_units;    //amount stored in a object in an array in purchase_units
 $price = ($purchase_units[0]->amount->value);
 // echo gettype($price);
@@ -48,21 +49,22 @@ unset($_SESSION["assess_token"]);
             -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
             crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script> 
 
     </head>
 
     <body>
         <!-- call post payment -->
         <?php 
-            header("Access-Control-Allow-Origin: *");
-            header("Access-Control-Allow-Methods: PUT, GET, POST");
-            header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+     //       header("Access-Control-Allow-Origin: *");
+     //       header("Access-Control-Allow-Methods: PUT, GET, POST");
+     //       header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
         
         ?>
-    
+
         <script>
+
             $(document).ready(function() {
                 // alert("hello");
                 var serviceURL = 'http://DESKTOP-6JQFQNE:8080/create_payment';
@@ -77,9 +79,9 @@ unset($_SESSION["assess_token"]);
                     type: "post",
                     data: JSON.stringify({
                             "PID": 1,
-                            "OID": 1,
-                            "Pstatus": "Complete",
-                            "price": 20
+                            "OID":168,
+                            "Pstatus": "<?php echo ($pstatus) ?>",
+                            "price": parseFloat(<?php echo $price ?>)
                         }),
                     dataType: "json",
                     success: function(){
