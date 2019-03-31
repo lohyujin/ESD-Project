@@ -36,9 +36,9 @@
             <tr>
                 <td>' . $counter . '</td>' .
                 '<td>' . $values[0] . '</td>' .
-                '<td>' . $price . '</td>' .
+                '<td>$' . $price . '</td>' .
                 '<td>' . $values[3] . '</td>' .
-                '<td>' . $subtotal . '</td>
+                '<td>$' . $subtotal . '</td>
             </tr>';
             
             $total += $subtotal;
@@ -47,7 +47,7 @@
         $data = array(
             'updated' => $_SESSION['cart'],
             'items_details' => $output,
-            'total_price' => number_format($total, 2)
+            'total_price' => number_format($total, 2, '.', '')
         );
         
         echo json_encode($data);
