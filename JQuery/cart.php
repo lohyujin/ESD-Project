@@ -72,11 +72,11 @@
                     <label for="cname">My name:</label>
                     <input type='text' id='cname' name='cname'>
                     <input id='checkout' class="btn btn-primary" type="button" value="Checkout" onclick='createOrder();' />
-                    <input type="hidden" id="totalprice" name="totalprice" />
+                    <!-- <output type="label" id="totalprice" name="totalprice"> -->
                     <input class="btn btn-primary" type="button" value="Continue Shopping" onclick="window.location.href='main-page.html'" />
                 </form>
 
-                <div id='error'></div>
+                <!-- <div id='error'></div> -->
             </div> <!-- col-md-6 -->
            </div> <!-- row -->
     
@@ -106,9 +106,9 @@
                             var obj = JSON.parse(data);
                             $('.items').html(obj.items_details);
                             // for displaying
-                            $('#total_price').text("$".concat(obj.total_price));
-                            // to be posted to checkout.php
-                            $('#totalprice').val(obj.total_price);
+                            $('#total_price').html("$" + obj.total_price);
+                            // for creating order
+                            totalprice = obj.total_price;
                             updatedCart = obj.updated;
                         }
                     });
@@ -139,13 +139,13 @@
                 // }
 
                 var cid = document.getElementById('cname').value;
-                var totalprice = parseFloat(document.getElementById('totalprice').value);
+                var totalprice2 = totalprice;
                 var Pstatus = 'Order Created';
 
                 var add_order_items = [];
                 for (var key in updatedCart)   {
                     var toappend = new Object()
-                    toappend.pid = parseInt(key);
+                    toappend.PID = parseInt(key);
                     toappend.Pname = updatedCart[key][0];
                     toappend.price = parseFloat(updatedCart[key][2]);
                     toappend.qty = parseInt(updatedCart[key][3]);
@@ -154,13 +154,11 @@
                 }
                 data = JSON.stringify({
                             "CID": cid,
-                            "totalPrice": totalprice,
+                            "totalPrice": totalprice2,
                             "Pstatus": Pstatus,
                             "add_order_items": add_order_items
                         });
-                console.log(typeof(data));
-                alert(data);
-
+                
                 // call service
                 var serviceURL = 'http://DESKTOP-8BPHEDQ:8082/orders';
                 $.ajax({
@@ -170,8 +168,7 @@
                     data: data,
                     dataType: "json",
                     success: function(){
-                        alert('success');
-                        // window.location.href='payment.php';
+                        window.location.href='payment.php';
 
                     },
                     error: function(jqXHR, textStatus, errorThrown){
