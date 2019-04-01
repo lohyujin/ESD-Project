@@ -67,7 +67,7 @@ unset($_SESSION["assess_token"]);
 
             $(document).ready(function() {
                 // alert("hello");
-                var serviceURL = 'http://DESKTOP-6JQFQNE:8083/create_payment';
+                var serviceURL = 'http://DESKTOP-6JQFQNE:8083/update_pstatus';
                 var OrderserviceURL = 'http://DESKTOP-6JQFQNE:8082/lastOrder';
 
                 $.get(OrderserviceURL, function(data){
@@ -92,12 +92,7 @@ unset($_SESSION["assess_token"]);
                             "price": parseFloat(<?php echo $price ?>)
                         }),
                     dataType: "json",
-                    success: function(){
-                        alert('success');
-                    },
-                    error: function(){
-                        alert('failure');
-                    }
+
                 });
             });
         });
