@@ -67,19 +67,27 @@ unset($_SESSION["assess_token"]);
 
             $(document).ready(function() {
                 // alert("hello");
-                var serviceURL = 'http://DESKTOP-6JQFQNE:8080/create_payment';
+                var serviceURL = 'http://DESKTOP-6JQFQNE:8083/create_payment';
+                var OrderserviceURL = 'http://DESKTOP-6JQFQNE:8082/lastOrder';
+
+                $.get(OrderserviceURL, function(data){
+                    var last_oid =  data.OID;
+ //                   alert(last_oid);
+
                 $.ajaxSetup({
                     headers:{
                         'Content-Type': "application/json"
                     }
                 });
+
+
                 jQuery.ajax({
                     url: serviceURL,
                     crossDomain: true,
                     type: "post",
                     data: JSON.stringify({
                             "PID": 1,
-                            "OID":168,
+                            "OID":last_oid,
                             "Pstatus": "<?php echo ($pstatus) ?>",
                             "price": parseFloat(<?php echo $price ?>)
                         }),
@@ -92,6 +100,7 @@ unset($_SESSION["assess_token"]);
                     }
                 });
             });
+        });
         </script>
     </body>
 </html>
