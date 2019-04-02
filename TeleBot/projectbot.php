@@ -53,6 +53,7 @@ $updateArray = json_decode($update, True);
 
 
 $chatid = $updateArray["result"][0]["message"]["from"]["id"];
+$line1 = "Hi James Tan"
 $line2 = "Payment details";
 $line3 = "Payment is successful";
 $line4 = "Trans.Date: ".$date;
