@@ -62,40 +62,42 @@ unset($_SESSION["assess_token"]);
      //       header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
         
         ?>
+        <div><font face='Papyrus' id='paymentcompleted' size='100'></font></div>
+
 
         <script>
 
             $(document).ready(function() {
-                // alert("hello");
-                var serviceURL = 'http://DESKTOP-6JQFQNE:8083/pstatus_update2';
-                var OrderserviceURL = 'http://DESKTOP-6JQFQNE:8082/lastOrder';
+                var serviceURL = 'http://DESKTOP-8BPHEDQ:8083/pstatus_update2';
+                var OrderserviceURL = 'http://DESKTOP-8BPHEDQ:8082/lastOrder';
 
                 $.get(OrderserviceURL, function(data){
                     var last_oid =  data.OID;
- //                   alert(last_oid);
 
-                $.ajaxSetup({
-                    headers:{
-                        'Content-Type': "application/json"
-                    }
+                    $.ajaxSetup({
+                        headers:{
+                            'Content-Type': "application/json"
+                        }
+                    });
+
+
+                    jQuery.ajax({
+                        url: serviceURL,
+                        crossDomain: true,
+                        type: "put",
+                        data: JSON.stringify({
+                                "PID": 1,
+                                "OID":last_oid,
+                                "Pstatus": "<?php echo ($pstatus) ?>",
+                                "price": parseFloat(<?php echo $price ?>)
+                            }),
+                        dataType: "json",
+                        success: function() {
+                            $('#paymentcompleted').html("Your order is made!");
+                        }
+                    });
+                    });
                 });
-
-
-                jQuery.ajax({
-                    url: serviceURL,
-                    crossDomain: true,
-                    type: "put",
-                    data: JSON.stringify({
-                            "PID": 1,
-                            "OID":last_oid,
-                            "Pstatus": "<?php echo ($pstatus) ?>",
-                            "price": parseFloat(<?php echo $price ?>)
-                        }),
-                    dataType: "json",
-
-                });
-            });
-        });
         </script>
     </body>
 </html>

@@ -102,7 +102,7 @@
                                     eachRow = "<td> <img src = "+ store[i].pid + ".jpg> </td>" +
                                     "<td>" + store[i].Pname + "<br>" + store[i].Pdesc + "<br>" + review + "</td>" +
                                     "<td>" + store[i].price +  "</td>" +
-                                    "<td><a href='cart.php?id=" + store[i].pid + "'>" +
+                                    "<td><a href='cart/cart.php?id=" + store[i].pid + "'>" +
                                     "Add To Cart</a></td>";
 
                                     tableContent += "<tr>" + eachRow + "<tr>";

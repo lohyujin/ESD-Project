@@ -11,6 +11,7 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
 <style>
    input[type=text], select {
         width: 100%;
@@ -22,6 +23,7 @@
         box-sizing: border-box;
         }
 </style>
+
 <body>
   <div class="container">
     <h1>Order Confirmation</h1>
@@ -35,71 +37,71 @@
 
 <script>
     $(document).ready(function() {
-            // SUMTING WRONG
-            var serviceurl = "http://LAPTOP-9M0FB286:8082/lastOrder";
-            $.get(serviceurl, function(data){
-              console.log(data);
-              var order_items = data.order_items;
-              var counter = 0;
-              var total = 0;
-              var table = "<table class='table table-striped' id='results-table' border='1'><tr>" +
-                        "<thead><th>No.</th>" +
-                        "<th>Title</th>" +
-                        "<th>Price</th>" +
-                        "<th>Quantity</th>"+
-                        "<th>Amount</th>"+
-                        "</tr></thead><tbody>";
-              for (var i = 0; i < order_items.length; i ++){
+        var serviceurl = "http://DESKTOP-8BPHEDQ:8082/lastOrder";
+        $.get(serviceurl, function(data){
+            var order_items = data.order_items;
+            var counter = 0;
+            total = data.totalPrice.toFixed(2);
+            var table = "<table class='table table-striped' id='results-table' border='1'><tr>" +
+                    "<thead><th>No.</th>" +
+                    "<th>Title</th>" +
+                    "<th>Quantity</th>" +
+                    "<th>Price</th>"+
+                    "<th>Amount</th>"+
+                    "</tr></thead><tbody>";
+
+            for (var i = 0; i < order_items.length; i ++){
                 counter += 1;
                 var amount = order_items[i].price * order_items[i].qty;
-                total += amount;
                 table += "<tr>" +
                 '<td>' + counter + '</td>' +
                 '<td>' + order_items[i].Pname + '</td>' +
                 '<td>' + order_items[i].qty + '</td>' +
-                '<td>' + order_items[i].price + '</td>' +
-                '<td>' + amount + '</td>'+
+                '<td>$ ' + order_items[i].price + '</td>' +
+                '<td>$ ' + amount.toFixed(2) + '</td>'+
                 "</tr>";
-              }
-              table = table + "<tr>"+
-                        "<td colspan='4' align='right'>Total</td>"+
-                        "<td id='total_price'></td>" +
-                        "</tr></tbody></table>";
-            $('#results').html(table);
-            $('#total_price').html(amount);
-          });
-        });
-    paypal.Buttons({
-      createOrder: function(data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: '23'
             }
-          }]
+            table = table + "<tr>"+
+                    "<td colspan='4' align='right'>Total</td>"+
+                    "<td id='total_price'></td>" +
+                    "</tr></tbody></table>";
+
+        $('#results').html(table);
+        $('#total_price').html("$ " + total);
         });
-      },
-      onApprove: function(data, actions) {
+    });
+
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: total
+                }
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
-          //instead of alert put payment has been made html display
-          alert('Transaction completed by ' + details.payer.name.given_name);
+            //instead of alert put payment has been made html display
+            alert('Transaction completed by ' + details.payer.name.given_name);
 //          alert(data.orderID);
 
-          //store orderID into cookie session
-          var orderid_data = data.orderID;
-          document.cookie = "myorderid="+orderid_data;
-         
-          // Call your server to save the transaction
-          return fetch('/paypal-transaction-complete', {
-            method: 'post',
-            body: JSON.stringify({                    
-              orderID: data.orderID
-            })
-          });
+            //store orderID into cookie session
+            var orderid_data = data.orderID;
+            document.cookie = "myorderid="+orderid_data;
+            window.location.href="show_order_detail.php";
 
+            // Call your server to save the transaction
+            return fetch('/paypal-transaction-complete', {
+                method: 'post',
+                body: JSON.stringify({                    
+                orderID: data.orderID
+                })
+            });
         });
-        
-      }
+            
+    }
 }).render('#paypal-button-container');
 
 </script>
