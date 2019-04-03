@@ -67,7 +67,7 @@ unset($_SESSION["assess_token"]);
 
             $(document).ready(function() {
                 // alert("hello");
-                var serviceURL = 'http://DESKTOP-6JQFQNE:8083/update_pstatus';
+                var serviceURL = 'http://DESKTOP-6JQFQNE:8083/pstatus_update2';
                 var OrderserviceURL = 'http://DESKTOP-6JQFQNE:8082/lastOrder';
 
                 $.get(OrderserviceURL, function(data){
@@ -84,7 +84,7 @@ unset($_SESSION["assess_token"]);
                 jQuery.ajax({
                     url: serviceURL,
                     crossDomain: true,
-                    type: "post",
+                    type: "put",
                     data: JSON.stringify({
                             "PID": 1,
                             "OID":last_oid,
