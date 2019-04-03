@@ -1,0 +1,62 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8083",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/create_payment" : {
+      "post" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "post-create_payment",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Create_Payment"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Create_Payment" : {
+      "type" : "object",
+      "required" : [ "Pstatus", "price", "PID", "OID" ],
+      "properties" : {
+        "PID" : {
+          "type" : "integer"
+        },
+        "OID" : {
+          "type" : "integer"
+        },
+        "Pstatus" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "number"
+        }
+      }
+    }
+  }
+}

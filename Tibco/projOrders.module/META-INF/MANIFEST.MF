@@ -14,6 +14,7 @@ Require-Capability: com.tibco.bw.model; filter:="(name=bwext)",
  com.tibco.bw.sharedresource.model; filter:="(name=bw.httpclient)",
  com.tibco.bw.sharedresource.model; filter:="(name=bw.httpconnector)",
  com.tibco.bw.sharedresource.model; filter:="(name=bw.jdbc)",
- com.tibco.bw.binding.model; filter:="(name=bw.rest)"
+ com.tibco.bw.binding.model; filter:="(name=bw.rest)",
+ com.tibco.bw.binding.model; filter:="(name=bw.rest.reference.binding)"
 TIBCO-BW-ModuleSharedVariables: META-INF/module.msv
 TIBCO-BW-Version: 2.4.2 V99 2018-11-21

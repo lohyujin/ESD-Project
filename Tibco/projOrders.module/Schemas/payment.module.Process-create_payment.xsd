@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="/T1554127997022Converted/JsonSchema" xmlns:tns="/T1554127997022Converted/JsonSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Create_Payment" type="tns:Create_Payment"/>
+    <xs:complexType name="Create_Payment">
+        <xs:sequence>
+            <xs:element name="PID" type="xs:integer"/>
+            <xs:element name="OID" type="xs:integer"/>
+            <xs:element name="Pstatus" type="xs:string"/>
+            <xs:element name="price" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

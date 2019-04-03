@@ -1,13 +1,8 @@
 {"records": [
     {
-        "jsonSchemaLocation": "/Orders2.module/Service Descriptors/orders2.module.Process-Orders.json",
-        "conversionType": "linked",
-        "xsdSchemaTargetNamespace": "http://www.amazing.com/Orders"
-    },
-    {
-        "jsonSchemaLocation": "/Orders2.module/Service Descriptors/shipping.module.Process-Shipping.json",
+        "jsonSchemaLocation": "/projOrders.module/Service Descriptors/payment.module.Process-create_payment.json",
         "conversionType": "generated",
-        "xsdSchemaTargetNamespace": "/T1552931419733Converted/JsonSchema"
+        "xsdSchemaTargetNamespace": "/T1554127997022Converted/JsonSchema"
     },
     {
         "jsonSchemaLocation": "/projOrders.module/Service Descriptors/orders2.projOrders.Process-Orders.json",

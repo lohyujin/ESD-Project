@@ -59,6 +59,32 @@
         }
       }
     },
+    "/orders_update" : {
+      "put" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "put-orders_update",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Order"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
     "/order/{OID}" : {
       "get" : {
         "summary" : "",
