@@ -24,7 +24,7 @@ if (curl_errno($ch)) {
 }
 $json = json_decode($result);
 $orderID = $json->id;
-echo $orderID;
+// echo $orderID;
 
 $pstatus = $json->status;
 // print_r("status = ".$pstatus);

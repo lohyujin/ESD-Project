@@ -73,7 +73,7 @@
                     <input type='text' id='cname' name='cname'>
                     <input id='checkout' class="btn btn-primary" type="button" value="Checkout" onclick='createOrder();' />
                     <!-- <output type="label" id="totalprice" name="totalprice"> -->
-                    <input class="btn btn-primary" type="button" value="Continue Shopping" onclick="window.location.href='main-page.html'" />
+                    <input class="btn btn-primary" type="button" value="Continue Shopping" onclick="window.location.href='../main-page.html'" />
                 </form>
 
                 <!-- <div id='error'></div> -->
@@ -168,7 +168,7 @@
                     data: data,
                     dataType: "json",
                     success: function(){
-                        window.location.href='payment.php';
+                        window.location.href='../payment/payment.php';
 
                     },
                     error: function(jqXHR, textStatus, errorThrown){
