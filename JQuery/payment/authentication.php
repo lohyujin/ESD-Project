@@ -25,7 +25,7 @@ else
     // var_dump($result);
     $json = json_decode($result);
     $access_token = $json->access_token;
-    print_r($access_token);
+    // print_r($access_token);
 }
 $_SESSION['access_token'] = $access_token;
 

@@ -73,7 +73,7 @@
                     <input type='text' id='cname' name='cname'>
                     <input id='checkout' class="btn btn-primary" type="button" value="Checkout" onclick='createOrder();' />
                     <!-- <output type="label" id="totalprice" name="totalprice"> -->
-                    <input class="btn btn-primary" type="button" value="Continue Shopping" onclick="window.location.href='main-page.html'" />
+                    <input class="btn btn-primary" type="button" value="Continue Shopping" onclick="window.location.href='../main-page.html'" />
                 </form>
 
                 <!-- <div id='error'></div> -->
@@ -84,7 +84,7 @@
             // load cart items
             $(document).ready(function() {
                 var pid = <?php echo $pid; ?>;
-                var serviceURL = "http://DESKTOP-GDMA71H:8080/getproduct/" + pid;
+                var serviceURL = "http://DESKTOP-8BPHEDQ:8080/getproduct/" + pid;
                 $.get(serviceURL, function (data)   {
                     var pname = data.Pname;
                     var pdesc = data.Pdesc;
@@ -160,7 +160,7 @@
                         });
                 
                 // call service
-                var serviceURL = 'http://DESKTOP-GDMA71H:8082/orders';
+                var serviceURL = 'http://DESKTOP-8BPHEDQ:8082/orders';
                 $.ajax({
                     url: serviceURL,
                     type: "post",
