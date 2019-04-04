@@ -93,7 +93,7 @@
             //store orderID into cookie session
             var orderid_data = data.orderID;
             document.cookie = "myorderid="+orderid_data;
-            window.location.href="show_order_detail.php";
+            window.location.href="payment_processing.php";
 
             // Call your server to save the transaction
             return fetch('/paypal-transaction-complete', {
