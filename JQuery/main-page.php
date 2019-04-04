@@ -48,8 +48,9 @@
                 <label for="category">Category</label>
                 <select id="category" name="category">
                 <option value="">All</option>
-                <option value="phones">Phones</option>
-                <option value="books">Books</option>
+                <option value="phones">Games</option>
+                <option value="phones">Shoes</option>
+                <option value="books">Phones</option>
                 </select>
                 <button id="btn" type="submit" class="btn btn-primary center-block">Submit &rarr; </button>
             </form>
@@ -77,7 +78,9 @@
                                 var tableContent = 
                                     "<table class='table' id='results-table'>" +
                                         "<tr><th><b>Image</b></th>" +
+                                        "<th><b></th></br>" +
                                         "<th><b>Product</th></br>" +
+                                        "<th><b>Category</b></th>" +
                                         "<th><b>Price</b></th>" +
                                         "<th><b>Add to Cart</b></th></tr>";
                                 for(var i = 0; i < store.length; i++) {
@@ -99,8 +102,10 @@
                                     });
                                     //var reviews = tweet;
                                     //console.log(review);
-                                    eachRow = "<td> <img src = "+ store[i].pid + ".jpg> </td>" +
-                                    "<td>" + store[i].Pname + "<br>" + store[i].Pdesc + "<br>" + review + "</td>" +
+                                    eachRow = "<td> <img src = "+ store[i].pid + ".jpg height='100' width='100'> </td>" +
+                                    "<td><br><br>Description: <br> Latest tweet:</td>" + 
+                                    "<td><b>" + store[i].Pname + "</b><br><br>" + store[i].Pdesc + "<br>" + review + "</td>" +
+                                    "<td>" + store[i].category +  "</td>" +
                                     "<td>" + store[i].price +  "</td>" +
                                     "<td><a href='cart/cart.php?id=" + store[i].pid + "'>" +
                                     "Add To Cart</a></td>";

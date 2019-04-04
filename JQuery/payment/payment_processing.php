@@ -86,7 +86,7 @@ unset($_SESSION["assess_token"]);
                         data: JSON.stringify({
                                 "PID": 1,
                                 "OID":last_oid,
-                                "Pstatus": "<?php echo ($pstatus) ?>",
+                                "Pstatus": "<?php echo ("PAYMENT " . $pstatus) ?>",
                                 "price": parseFloat(<?php echo $price ?>)
                             }),
                         dataType: "json",
