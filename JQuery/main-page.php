@@ -83,7 +83,7 @@
                                 for(var i = 0; i < store.length; i++) {
                                     var review;
                                     $.ajax({
-                                            url: 'get_tweet.php',
+                                            url: 'twitter/get_tweet.php',
                                             type: 'post',
                                             async: false,
                                             data: {
