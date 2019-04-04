@@ -62,8 +62,6 @@ unset($_SESSION["assess_token"]);
      //       header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
         
         ?>
-        <div><font face='Papyrus' id='paymentcompleted' size='100'></font></div>
-
 
         <script>
 
@@ -93,7 +91,7 @@ unset($_SESSION["assess_token"]);
                             }),
                         dataType: "json",
                         success: function() {
-                            $('#paymentcompleted').html("Your order is made!");
+                            window.location.href='payment_completion.php';
                         }
                     });
                     });
