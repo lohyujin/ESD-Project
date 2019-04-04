@@ -68,8 +68,8 @@ unset($_SESSION["assess_token"]);
         <script>
 
             $(document).ready(function() {
-                var serviceURL = 'http://DESKTOP-8BPHEDQ:8083/pstatus_update2';
-                var OrderserviceURL = 'http://DESKTOP-8BPHEDQ:8082/lastOrder';
+                var serviceURL = 'http://DESKTOP-GDMA71H:8083/pstatus_update2';
+                var OrderserviceURL = 'http://DESKTOP-GDMA71H:8082/lastOrder';
 
                 $.get(OrderserviceURL, function(data){
                     var last_oid =  data.OID;
