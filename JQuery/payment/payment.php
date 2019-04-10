@@ -40,7 +40,7 @@
 
 <script>
     $(document).ready(function() {
-        var serviceurl = "http://DESKTOP-8BPHEDQ:8082/lastOrder";
+        var serviceurl = "http://LAPTOP-9M0FB286:8082/lastOrder";
         $.get(serviceurl, function(data){
             var order_items = data.order_items;
             var counter = 0;

@@ -84,7 +84,7 @@
             // load cart items
             $(document).ready(function() {
                 var pid = <?php echo $pid; ?>;
-                var serviceURL = "http://DESKTOP-8BPHEDQ:8080/getproduct/" + pid;
+                var serviceURL = "http://LAPTOP-9M0FB286:8080/getproduct/" + pid;
                 $.get(serviceURL, function (data)   {
                     var pname = data.Pname;
                     var pdesc = data.Pdesc;
@@ -160,7 +160,7 @@
                         });
                 
                 // call service
-                var serviceURL = 'http://DESKTOP-8BPHEDQ:8082/orders';
+                var serviceURL = 'http://LAPTOP-9M0FB286:8082/orders';
                 $.ajax({
                     url: serviceURL,
                     type: "post",

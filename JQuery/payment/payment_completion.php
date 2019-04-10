@@ -14,6 +14,7 @@
 
     <body>
         <div><font face='Papyrus' size='100'>Your order is on its way!</font></div>
+        <h1><a href = "/main-page.php">Back home<h1>
     </body>
 
 </html>

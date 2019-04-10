@@ -67,7 +67,7 @@
                 $("#search-form").submit(function (event) {
                         var category = document.getElementById('category').value;
                         var search = document.getElementById('search').value;
-                        var serviceURL = "http://DESKTOP-8BPHEDQ:8080/products/%25" + search + "%25&%25" + category + "%25";
+                        var serviceURL = "http://LAPTOP-9M0FB286:8080/products/%25" + search + "%25&%25" + category + "%25";
                         $.get(serviceURL, function (data) {
                             var store = data.Product;
                             if (store == undefined) {
@@ -77,7 +77,7 @@
                                 // Placing the data within a table
                                 var tableContent = 
                                     "<table class='table' id='results-table'>" +
-                                        "<tr><th><b>Image</b></th>" +
+                                    "<tr><th><b>Image</b></th>" +
                                         "<th><b></th></br>" +
                                         "<th><b>Product</th></br>" +
                                         "<th><b>Category</b></th>" +
@@ -103,7 +103,7 @@
                                     //var reviews = tweet;
                                     //console.log(review);
                                     eachRow = "<td> <img src = "+ store[i].pid + ".jpg height='100' width='100'> </td>" +
-                                    "<td><br><br>Description: <br> Latest tweet:</td>" + 
+                                    "<td><br><br>Description: <br> Latest tweet:</td>" +
                                     "<td><b>" + store[i].Pname + "</b><br><br>" + store[i].Pdesc + "<br>" + review + "</td>" +
                                     "<td>" + store[i].category +  "</td>" +
                                     "<td>" + store[i].price +  "</td>" +
