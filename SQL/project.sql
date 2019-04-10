@@ -107,28 +107,3 @@ CREATE TABLE payment (
   
   PRIMARY KEY (PayID)
 );
-
--- Create Database -- 
-
-DROP DATABASE IF EXISTS project_notification;
-CREATE DATABASE IF NOT EXISTS project_notification DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE project_notification;
-
--- Add Table --
-
-DROP TABLE IF EXISTS notification;
-CREATE TABLE notification (
-  NID			INT 			NOT NULL AUTO_INCREMENT,
-  Pstatus		VARCHAR(20)		NOT NULL,
-  OID           INT             NOT NULL,
-  
-  PRIMARY KEY (NID)
-);
-
--- Add Data -- 
-INSERT INTO notification(NID, Pstatus, OID)
-VALUES 
-(1, 'Pending',4),
-(2, 'Order received',2),
-(3, 'Ready to ship',3),
-(4, 'Out for delivery',1);
