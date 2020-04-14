@@ -7,10 +7,10 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity=""
             crossorigin="anonymous">
   <script
-    src="https://www.paypal.com/sdk/js?client-id=Aa3whO6Fqbghp3fTu0yK_OtjMfID-bXdM8m9dm7zyEr8V_EemSNqVytyguupqQQuy-9klr4F_CfZ1zcK">
+    src="https://www.paypal.com/sdk/js?client-id=">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -40,7 +40,7 @@
 
 <script>
     $(document).ready(function() {
-        var serviceurl = "http://LAPTOP-9M0FB286:8082/lastOrder";
+        var serviceurl = "http://:8082/lastOrder";
         $.get(serviceurl, function(data){
             var order_items = data.order_items;
             var counter = 0;
