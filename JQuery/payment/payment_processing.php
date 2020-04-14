@@ -47,7 +47,7 @@ unset($_SESSION["assess_token"]);
         <!-- HEAD
                 This is where you put your jQuery, Bootstrap JS library imports
             -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity=""
             crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script> 
@@ -66,8 +66,8 @@ unset($_SESSION["assess_token"]);
         <script>
 
             $(document).ready(function() {
-                var serviceURL = 'http://LAPTOP-9M0FB286:8083/pstatus_update2';
-                var OrderserviceURL = 'http://LAPTOP-9M0FB286:8082/lastOrder';
+                var serviceURL = 'http://:8083/pstatus_update2';
+                var OrderserviceURL = 'http://:8082/lastOrder';
 
                 $.get(OrderserviceURL, function(data){
                     var last_oid =  data.OID;
