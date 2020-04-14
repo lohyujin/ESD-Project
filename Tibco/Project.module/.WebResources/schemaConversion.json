@@ -1,5 +1,0 @@
-{"records": [{
-    "jsonSchemaLocation": "/Project.module/Service Descriptors/project.module.Process-GetAllProducts.json",
-    "conversionType": "linked",
-    "xsdSchemaTargetNamespace": "http://www.shop.com/Books"
-}]}

@@ -17,6 +17,6 @@ $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 $data = $twitter->setGetfield($getfield)
     ->buildOauth($url, $requestMethod)
-    ->performRequest(true, array(CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem'));
+    ->performRequest(true, array(CURLOPT_CAINFO => dirname(__FILE__) . '/.pem'));
 echo(json_encode($data));
 ?>

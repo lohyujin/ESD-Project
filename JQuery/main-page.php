@@ -67,7 +67,7 @@
                 $("#search-form").submit(function (event) {
                         var category = document.getElementById('category').value;
                         var search = document.getElementById('search').value;
-                        var serviceURL = "http://LAPTOP-9M0FB286:8080/products/%25" + search + "%25&%25" + category + "%25";
+                        var serviceURL = "http://:8080/products/%25" + search + "%25&%25" + category + "%25";
                         $.get(serviceURL, function (data) {
                             var store = data.Product;
                             if (store == undefined) {

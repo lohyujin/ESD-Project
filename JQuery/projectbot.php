@@ -28,7 +28,7 @@ if($text == '/getorders'){
 
 if(is_numeric($text)){
     $oid = $text;
-    $send_url = "http://LAPTOP-9M0FB286:8082/order/" . $oid;
+    $send_url = "http://:8082/order/" . $oid;
     $curl2 = curl_init();
     curl_setopt_array($curl2, [
         CURLOPT_RETURNTRANSFER => 1, 
@@ -45,9 +45,5 @@ if(is_numeric($text)){
     //print_r($message);
     file_get_contents($url."/sendmessage?text=".$message."&chat_id=".$chat_id);    
      };
-// else{
-//     $message = urlencode("Please enter a valid OID");
-//     file_get_contents($url."/sendmessage?text=".$message."&chat_id=".$chat_id);
-// };
 
 ?>
